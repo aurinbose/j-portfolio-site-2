@@ -522,3 +522,27 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     console.log('Portfolio website loaded successfully!');
     console.log('Available sections:', Array.from(sections).map(s => s.id));
 }
+
+// Resume Modal Controls
+document.addEventListener('DOMContentLoaded', function() {
+    var resumeBtn = document.getElementById('view-resume-btn');
+    var resumeModal = document.getElementById('resume-modal');
+    var resumeClose = document.getElementById('resume-close');
+
+    if (resumeBtn && resumeModal && resumeClose) {
+        resumeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            resumeModal.style.display = 'flex';
+        });
+        resumeClose.addEventListener('click', function() {
+            resumeModal.style.display = 'none';
+        });
+        // Close modal on ESC or clicking outside
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') resumeModal.style.display = 'none';
+        });
+        resumeModal.addEventListener('click', function(e){
+            if (e.target === resumeModal) resumeModal.style.display = 'none';
+        });
+    }
+});
